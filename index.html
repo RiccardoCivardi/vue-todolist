@@ -20,7 +20,87 @@
 </head>
 <body>
 
-  <div id="app"></div>
+  <div id="app" class="main-wrapper">
+
+    <!-- HEADER -->
+    <header>
+
+      <div class="container d-flex flex-column justify-content-around align-items-center">
+
+        <img :src="path + imgLogo" :alt="getAltImg() + ' ' + 'picture'">
+        <p>Ricordarsi le cose da fare non sar&agrave; pi&ugrave; un problema <span>&#128640</span></p>
+
+      </div>
+
+    </header>
+    <!-- /Header -->
+
+    <!-- MAIN -->
+    <main>
+
+      <div class="input-area container">
+
+        <input type="text" placeholder="Inserisci nuova task">
+        <button>Aggiungi task</button>
+        <p class="error-message">errore</p>
+
+      </div>
+
+      <!-- todo-area -->
+      <div class="todo-area container">
+
+        <ul>
+
+          <li class="d-flex justify-content-between align-items-center">
+
+            <div class="data-area">
+
+              <span class="counter">1</span>
+
+              <span class="line-throught">Comprare collirio al bubi</span>
+
+            </div>
+
+            <div class="btn-area d-flex">
+
+              <div class="check-area d-flex flex-column align-items-center">
+                
+                <i class="fa-solid fa-check green"></i>
+                <i class="fa-solid fa-xmark red"></i>
+
+              </div>
+
+              <div class="trash-area d-flex align-items-center">
+
+                <i class="fa-solid fa-trash-can-arrow-up grey"></i>
+
+              </div>
+
+            </div>
+
+          </li>
+
+        </ul>
+
+      </div>
+      <!-- /todo-area -->
+
+    </main>
+    <!-- /Main-->
+
+    <!-- FOOTER -->
+    <footer class="d-flex justify-content-center align-items-center">
+
+      <p>Made with
+        <i class="fa-solid fa-heart"></i>
+        by
+        <i class="fa-solid fa-user-ninja"></i>
+      </p>
+
+    </footer>
+    <!-- /Footer-->
+
+  </div>
   
 </body>
 </html>

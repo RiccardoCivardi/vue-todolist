@@ -26,10 +26,28 @@ createApp({
   data(){
     return{
 
+      path: 'assets/img/',
+      imgLogo: 'logo.png'
+
     }
   },
 
   methods: {
+
+    getAltImg(){
+
+      const imgLogoArray = this.imgLogo.split('.');
+      console.log(imgLogoArray[0]);
+      return imgLogoArray[0];
+
+
+    }
+
+  },
+
+  mounted() {
+
+    
 
   }
 
