@@ -25,7 +25,7 @@
     <!-- HEADER -->
     <header>
 
-      <div class="container d-flex flex-column justify-content-around align-items-center">
+      <div class="container logo d-flex flex-column justify-content-around align-items-center">
 
         <img :src="path + imgLogo" :alt="getAltImg() + ' ' + 'picture'">
         <p>Ricordarsi le cose da fare non sar&agrave; pi&ugrave; un problema <span>&#128640</span></p>
@@ -38,41 +38,71 @@
     <!-- MAIN -->
     <main>
 
+      <!-- input-area -->
       <div class="input-area container">
 
-        <input type="text" placeholder="Inserisci nuova task">
-        <button>Aggiungi task</button>
-        <p class="error-message">errore</p>
+        <div class="d-flex justify-content-center align-items-center">
+
+          <input 
+            @keyup.enter="createNewTask()"
+            v-model.trim="newTask"
+            type="text" 
+            placeholder="Inserisci una nuova task"
+          >
+          <button @click="createNewTask()">Aggiungi task</button>
+          <i 
+          @click="deleteAll()"
+          class="fa-solid fa-trash-can-arrow-up grey"></i>
+
+        </div>
+
+        <p class="error-message">{{errorMessage}}</p>
 
       </div>
+      <!-- /input-area -->
 
       <!-- todo-area -->
       <div class="todo-area container">
 
-        <ul>
+        <ul v-if="tasks.length > 0">
 
-          <li class="d-flex justify-content-between align-items-center">
+          <li 
+            v-for="(todo, index) in tasks"
+            @click="addCounter(index)"
+            class="d-flex justify-content-between align-items-center">
 
             <div class="data-area">
 
-              <span class="counter">1</span>
-
-              <span class="line-throught">Comprare collirio al bubi</span>
-
+              <span :class="{'line-throught': todo.done}">{{todo.task}}</span>
+              <span 
+                v-if="todo.counter > 1"
+                class="counter">
+                {{todo.counter}}
+              </span>
+              
             </div>
 
             <div class="btn-area d-flex">
 
               <div class="check-area d-flex flex-column align-items-center">
                 
-                <i class="fa-solid fa-check green"></i>
-                <i class="fa-solid fa-xmark red"></i>
+                <i
+                  @click.stop="clickCheck(index)" 
+                  class="fa-solid fa-check green">
+                </i>
+                <i
+                  @click.stop="clickDelete(index)" 
+                  class="fa-solid fa-xmark red">
+                </i>
 
               </div>
 
               <div class="trash-area d-flex align-items-center">
 
-                <i class="fa-solid fa-trash-can-arrow-up grey"></i>
+                <i 
+                  @click.stop="eraserTask(index)"
+                  class="fa-solid fa-eraser grey eraser">
+                </i>
 
               </div>
 
@@ -81,6 +111,13 @@
           </li>
 
         </ul>
+
+        <div v-else class="complete-text container">
+
+          <h3>Tutte le task sono state portate a termine!</h3>
+          <span class="emoji">&#128526;</span>
+
+        </div>
 
       </div>
       <!-- /todo-area -->

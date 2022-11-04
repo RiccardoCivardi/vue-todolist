@@ -78,6 +78,10 @@ header {
   text-align: center;
 }
 
+.container.logo {
+  height: 100%;
+}
+
 header img {
   width: 300px;
 }
@@ -92,7 +96,7 @@ main {
   height: 72%;
   background-color: rgb(240, 240, 240);
   font-size: 1.3rem;
-  overflow: auto;
+  overflow: hidden;
 }
 
 /* input-area */
@@ -103,8 +107,7 @@ main {
 }
 
 input {
-  width: 300px;
-  margin-right: 20px;
+  width: 310px;
 }
 
 input::placeholder {
@@ -117,6 +120,7 @@ input, button {
   border-radius: 20px;
   border: 2px solid #00E166;
   transition: 0.2s;
+  cursor: pointer;
 }
 
 input:focus {
@@ -130,6 +134,7 @@ input:focus::placeholder {
 
 button {
   font-weight: bold;
+  margin: 0 20px;
 }
 
 button:hover {
@@ -137,16 +142,49 @@ button:hover {
   background-color: #00E166;
 }
 
+.input-area i {
+  font-size: 4rem;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.input-area i:hover {
+  color: #00E166;
+  animation: trash 0.5s linear;
+}
+
+@keyframes trash {
+  25% {
+    transform: rotate(2deg) translateY(-5px) ;
+  }
+  50% {
+    transform: rotate(0deg) translateY(0);
+  }
+  75% {
+    transform: rotate(-2deg) translateY(-5px);
+  }
+  100% {
+    transform: rotate(0deg) translateY(0);
+  }
+}
+
 .input-area p {
-  padding: 10px 0 5px;
   color: red;
+  height: 40px;
+  line-height: 40px;
 }
 
 /* todo-area */
 
+.todo-area{
+  height: 310px;
+  overflow: auto;
+}
+
 li {
   padding: 10px 30px;
-  border-bottom: 1px dotted lightgrey;
+  border-bottom: 1px dotted black;
+  cursor: pointer;
 }
 
 li:hover {
@@ -159,12 +197,11 @@ li:hover {
   height: 40px;
   border-radius: 50%;
   background-color: #00E166;
-  margin-right: 10px;
+  margin-left: 10px;
   text-align: center;
   line-height: 40px;
   font-size: 1.5rem;
   font-weight: bold;
-  cursor: pointer;
 }
 
 .line-throught {
@@ -175,14 +212,43 @@ li:hover {
   margin-right: 20px;
 }
 
-main i { 
+.todo-area i { 
   font-size: 2.5rem;
-  cursor: pointer;
   filter: opacity(0.5);
 }
 
-main i:hover {
+.todo-area i:hover {
   filter: opacity(1) brightness(1.5);
+}
+
+.eraser:hover {
+  animation: eraser 0.2s linear;
+}
+
+@keyframes eraser {
+  25%{
+    transform: translateX(-3px);
+  }
+  50%{
+    transform: translateX(0px);
+  }
+  75%{
+    transform: translateX(3px);
+  }
+  100%{
+    transform: translateX(0);
+  }
+}
+
+/* complete text */
+
+.complete-text {
+  text-align: center;
+  padding-top: 30px;
+}
+
+.complete-text span {
+  font-size: 4rem;
 }
 
 /* FOOTER */
